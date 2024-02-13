@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 500px;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-color: #800080;
+  background-image: url("background-img.jpg");
+}
+
+.valentines-text {
+  font-size: 30px;
+  font-family: "Dancing Script", cursive;
+  position: absolute;
+  top: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  color: #eecad0;
+}
+
+.wrapper {
+  height: 200px;
+  width: 300px;
+  background-color: #c7ade2;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+}
+
+.lid {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-right: 150px solid transparent;
+  border-bottom: 100px solid transparent;
+  border-left: 150px solid transparent;
+  transform-origin: top;
+  transition: transform 0.25s linear;
+}
+
+/* Lid when closed */
+.lid.one {
+  border-top: 100px solid #be9be5;
+  transform: rotateX(0deg);
+  z-index: 3;
+  transition-delay: 1.75s;
+}
+
+/* Lid when opened */
+.lid.two {
+  border-top: 100px solid #be9be5;
+  transform: rotateX(90deg);
+  z-index: 1;
+  transition-delay: 1.5s;
+}
+
+.envelope {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-top: 100px solid transparent;
+  border-right: 150px solid #d7c2f0;
+  border-bottom: 100px solid #d7c2f0;
+  border-left: 150px solid #E8DDF7;
+  z-index: 3;
+  transition: opacity 0.35s;
+  transition-delay: 1.5s;
+}
+
+.envelope.hidden {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.letter {
+  position: absolute;
+  top: 0;
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  border-radius: 15px;
+  z-index: 2;
+  transition: transform 0.5s, height 0.5s, width 0.5s;
+  cursor: pointer;
+  padding-bottom: 40px;
+}
+
+.letter p {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 30px;
+  color: #3B4049;
+}
+
+.wrapper:hover .lid.one {
+    transform: rotateX(90deg);
+    transition-delay: 0s;
+}
+
+.wrapper:hover .lid.two {
+    transform: rotateX(180deg);
+    transition-delay: 0.25s;
+}
+
+.wrapper:hover .letter {
+  transform: translateY(-50px);
+  transition-delay: 0.5s;
+}
+
+.wrapper.letter-opened .lid.one {
+  transform: rotateX(90deg);
+  transition-delay: 1.25s;
+}
+
+.wrapper.letter-opened .lid.two {
+  transform: rotateX(180deg);
+  transition-delay: 1.5s;
+}
+
+.wrapper.letter-opened .letter {
+  transform: translateY(-50px);
+  transition-delay: 0.5s;
+
+  height: 900px;
+  width: 1000px;
+}
+
+.letter-text {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Adding transition for opacity */
+}
+
+.letter-text p {
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  text-align: justify;
+  padding: 30px;
+}
+
+.letter.open .letter-text {
+  display: block;
+  opacity: 1; /* Making the text visible when the letter is open */
+}
